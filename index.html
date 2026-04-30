@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হামাকে নওগাঁ: জরুরি সেবায় আমরা</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Hind Siliguri', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f8f3;
+            color: #333;
+        }
+
+        /* আপনার পছন্দ করা কভার ডিজাইন */
+        .header {
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.8)), 
+                        url('cover.png'); /* এখানে আপনার ছবির নাম হুবহু মিল থাকতে হবে */
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .main-title {
+            color: #1a4f1a;
+            font-size: 26px;
+            font-weight: 700;
+            margin: 60px 0 5px 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .sub-title {
+            color: #2d5a27;
+            font-size: 15px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* আপনার পাঠানো স্ক্রিনশটের মতো কার্ড ডিজাইন */
+        .container {
+            max-width: 450px;
+            margin: -50px auto 30px;
+            background: #ffffff;
+            padding: 30px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 99;
+        }
+
+        .section-title {
+            font-size: 19px;
+            margin-bottom: 25px;
+            color: #444;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        /* আপনার ইমেজের আইকন স্টাইল */
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2d5a27;
+            font-size: 18px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 15px 14px 50px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background-color: #fcfdfc;
+            font-size: 15px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        /* আপনার ইমেজের মতো হুবহু সবুজ বাটন */
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 16px;
+            width: 100%;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            margin-top: 10px;
+        }
+
+        .privacy-note {
+            font-size: 11px;
+            color: #888;
+            text-align: center;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            padding-bottom: 30px;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="header">
+    <h1 class="main-title">হামাকে নওগাঁ: জরুরি সেবায় আমরা</h1>
+    <p class="sub-title">বিপদে নওগাঁবাসীর পাশে দাঁড়ানোর একটি মানবিক উদ্যোগ</p>
+</div>
+
+<div class="container">
+    <h3 class="section-title">নিরাপদে ও গোপনে আপনার তথ্য দিন</h3>
+    
+    <form id="blood-form">
+        <div class="input-group">
+            <i class="fas fa-id-card"></i>
+            <input type="text" name="Name" placeholder="আপনার নাম" required>
+        </div>
+        
+        <div class="input-group">
+            <i class="fas fa-phone-alt"></i>
+            <input type="tel" name="Phone" placeholder="মোবাইল নম্বর" required>
+        </div>
+        
+        <div class="input-group">
+            <i class="fas fa-tint" style="color: #c9302c;"></i>
+            <select name="BloodGroup" required>
+                <option value="">রক্তের গ্রুপ</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <i class="fas fa-map-marker-alt" style="color: #d9534f;"></i>
+            <input type="text" name="Upazila" placeholder="উপজেলা" required>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            তথ্য জমা দিতে এখানে ক্লিক করুন 
+            <i class="fas fa-link"></i>
+        </button>
+    </form>
+    
+    <p class="privacy-note">* আপনার তথ্য আমাদের সুরক্ষিত ডেটাবেজে গোপন থাকবে এবং কোনো অবস্থাতেই ফেসবুকে বা কোথাও জনসমক্ষে প্রকাশ করা হবে না।</p>
+</div>
+
+<div class="footer">
+    © ২০২০ হামাকে নওগাঁ।
+</div>
+
+<script>
+    // এখানে আপনার গুগল অ্যাপ স্ক্রিপ্ট URL টি বসান
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
+    const form = document.forms['blood-form'];
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            alert("ধন্যবাদ! আপনার তথ্য সফলভাবে জমা হয়েছে।");
+            form.reset();
+        })
+        .catch(error => console.error('Error!', error.message));
+    });
+</script>
+
+</body>
+</html>
