@@ -15,25 +15,26 @@
             color: #333;
         }
 
-        /* আপনার পছন্দ করা কভার ডিজাইন */
+        /* হেডার কভার ডিজাইন: গিটহাবের cover.png ব্যবহার করা হয়েছে */
         .header {
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.8)), 
-                        url('cover.png'); /* এখানে আপনার ছবির নাম হুবহু মিল থাকতে হবে */
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.9)), 
+                        url('cover.png'); 
             background-size: cover;
             background-position: center;
-            height: 300px;
+            height: 320px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 0 20px;
         }
 
         .main-title {
             color: #1a4f1a;
             font-size: 26px;
             font-weight: 700;
-            margin: 60px 0 5px 0;
+            margin: 80px 0 5px 0;
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
@@ -44,31 +45,31 @@
             font-weight: 600;
         }
 
-        /* আপনার পাঠানো স্ক্রিনশটের মতো কার্ড ডিজাইন */
+        /* কার্ড বা কন্টেইনার ডিজাইন */
         .container {
             max-width: 450px;
-            margin: -50px auto 30px;
+            margin: -60px auto 30px;
             background: #ffffff;
             padding: 30px 25px;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             position: relative;
             z-index: 99;
         }
 
         .section-title {
-            font-size: 19px;
+            font-size: 18px;
             margin-bottom: 25px;
             color: #444;
             text-align: center;
         }
 
+        /* ইনপুট গ্রুপ স্টাইল */
         .input-group {
             margin-bottom: 18px;
             position: relative;
         }
 
-        /* আপনার ইমেজের আইকন স্টাইল */
         .input-group i {
             position: absolute;
             left: 15px;
@@ -82,14 +83,20 @@
             width: 100%;
             padding: 14px 15px 14px 50px;
             border: 1px solid #e0e0e0;
-            border-radius: 12px;
+            border-radius: 10px;
             background-color: #fcfdfc;
             font-size: 15px;
             box-sizing: border-box;
             outline: none;
+            transition: 0.3s;
         }
 
-        /* আপনার ইমেজের মতো হুবহু সবুজ বাটন */
+        input:focus, select:focus {
+            border-color: #28a745;
+            background-color: #fff;
+        }
+
+        /* সাবমিট বাটন */
         .submit-btn {
             background-color: #28a745;
             color: white;
@@ -113,7 +120,7 @@
             color: #888;
             text-align: center;
             margin-top: 20px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .footer {
@@ -166,7 +173,7 @@
             <input type="text" name="Upazila" placeholder="উপজেলা" required>
         </div>
 
-        <button type="submit" class="submit-btn">
+        <button type="submit" class="submit-btn" id="submit-btn">
             তথ্য জমা দিতে এখানে ক্লিক করুন 
             <i class="fas fa-link"></i>
         </button>
@@ -176,22 +183,39 @@
 </div>
 
 <div class="footer">
-    © ২০২০ হামাকে নওগাঁ।
+    © ২০২৬ হামাকে নওগাঁ।
 </div>
 
 <script>
-    // এখানে আপনার গুগল অ্যাপ স্ক্রিপ্ট URL টি বসান
+    // এখানে আপনার গুগল অ্যাপ স্ক্রিপ্ট থেকে পাওয়া Web App URL টি বসাবেন
     const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
     const form = document.forms['blood-form'];
+    const submitBtn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+      
+      if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+          alert("দয়া করে কোডের ভেতরে আপনার Google Script URL টি বসান।");
+          return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = "প্রসেসিং হচ্ছে...";
+
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
             alert("ধন্যবাদ! আপনার তথ্য সফলভাবে জমা হয়েছে।");
             form.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "তথ্য জমা দিতে এখানে ক্লিক করুন <i class='fas fa-link'></i>";
         })
-        .catch(error => console.error('Error!', error.message));
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("দুঃখিত, তথ্য জমা দেওয়া সম্ভব হয়নি।");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "তথ্য জমা দিতে এখানে ক্লিক করুন <i class='fas fa-link'></i>";
+        });
     });
 </script>
 
