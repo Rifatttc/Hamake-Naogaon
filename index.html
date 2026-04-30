@@ -15,9 +15,9 @@
             color: #333;
         }
 
-        /* হেডার কভার ডিজাইন: গিটহাবের cover.png ব্যবহার করা হয়েছে */
+        /* হেডার কভার: গিটহাবের cover.png এখানে সরাসরি লোড হবে */
         .header {
-            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.9)), 
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 100%), 
                         url('cover.png'); 
             background-size: cover;
             background-position: center;
@@ -32,15 +32,15 @@
 
         .main-title {
             color: #1a4f1a;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
-            margin: 80px 0 5px 0;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+            margin: 100px 0 5px 0;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
         }
 
         .sub-title {
             color: #2d5a27;
-            font-size: 15px;
+            font-size: 16px;
             margin: 0;
             font-weight: 600;
         }
@@ -48,23 +48,22 @@
         /* কার্ড বা কন্টেইনার ডিজাইন */
         .container {
             max-width: 450px;
-            margin: -60px auto 30px;
+            margin: -50px auto 30px;
             background: #ffffff;
             padding: 30px 25px;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             position: relative;
             z-index: 99;
         }
 
         .section-title {
-            font-size: 18px;
+            font-size: 19px;
             margin-bottom: 25px;
             color: #444;
             text-align: center;
         }
 
-        /* ইনপুট গ্রুপ স্টাইল */
         .input-group {
             margin-bottom: 18px;
             position: relative;
@@ -83,7 +82,7 @@
             width: 100%;
             padding: 14px 15px 14px 50px;
             border: 1px solid #e0e0e0;
-            border-radius: 10px;
+            border-radius: 12px;
             background-color: #fcfdfc;
             font-size: 15px;
             box-sizing: border-box;
@@ -142,9 +141,9 @@
 <div class="container">
     <h3 class="section-title">নিরাপদে ও গোপনে আপনার তথ্য দিন</h3>
     
-    <form id="blood-form">
+    <form id="naogaon-form">
         <div class="input-group">
-            <i class="fas fa-id-card"></i>
+            <i class="fas fa-user"></i>
             <input type="text" name="Name" placeholder="আপনার নাম" required>
         </div>
         
@@ -175,7 +174,7 @@
 
         <button type="submit" class="submit-btn" id="submit-btn">
             তথ্য জমা দিতে এখানে ক্লিক করুন 
-            <i class="fas fa-link"></i>
+            <i class="fas fa-paper-plane"></i>
         </button>
     </form>
     
@@ -187,34 +186,29 @@
 </div>
 
 <script>
-    // এখানে আপনার গুগল অ্যাপ স্ক্রিপ্ট থেকে পাওয়া Web App URL টি বসাবেন
+    // গুরুত্বপূর্ণ: আপনার Google Apps Script URL টি এখানে বসাবেন
     const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
-    const form = document.forms['blood-form'];
-    const submitBtn = document.getElementById('submit-btn');
+    
+    const form = document.forms['naogaon-form'];
+    const btn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', e => {
       e.preventDefault();
+      btn.disabled = true;
+      btn.innerHTML = "অপেক্ষা করুন...";
       
-      if(scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-          alert("দয়া করে কোডের ভেতরে আপনার Google Script URL টি বসান।");
-          return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = "প্রসেসিং হচ্ছে...";
-
       fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
             alert("ধন্যবাদ! আপনার তথ্য সফলভাবে জমা হয়েছে।");
             form.reset();
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "তথ্য জমা দিতে এখানে ক্লিক করুন <i class='fas fa-link'></i>";
+            btn.disabled = false;
+            btn.innerHTML = "তথ্য জমা দিতে এখানে ক্লিক করুন <i class='fas fa-paper-plane'></i>";
         })
         .catch(error => {
             console.error('Error!', error.message);
-            alert("দুঃখিত, তথ্য জমা দেওয়া সম্ভব হয়নি।");
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = "তথ্য জমা দিতে এখানে ক্লিক করুন <i class='fas fa-link'></i>";
+            alert("দুঃখিত, তথ্য জমা দিতে সমস্যা হয়েছে।");
+            btn.disabled = false;
+            btn.innerHTML = "তথ্য জমা দিতে এখানে ক্লিক করুন <i class='fas fa-paper-plane'></i>";
         });
     });
 </script>
