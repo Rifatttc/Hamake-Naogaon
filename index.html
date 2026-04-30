@@ -15,9 +15,9 @@
             color: #333;
         }
 
-        /* হেডার কভার: গিটহাবের cover.png এখানে সরাসরি লোড হবে */
+        /* কভার ইমেজ সেকশন */
         .header {
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 100%), 
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.9)), 
                         url('cover.png'); 
             background-size: cover;
             background-position: center;
@@ -30,12 +30,13 @@
             padding: 0 20px;
         }
 
+        /* এই অংশটি আপনার লেখাটিকে সবুজ করবে */
         .main-title {
-            color: #1a4f1a;
+            color: #28a745; /* প্রফেশনাল সবুজ রঙ */
             font-size: 28px;
             font-weight: 700;
             margin: 100px 0 5px 0;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.9);
         }
 
         .sub-title {
@@ -45,7 +46,7 @@
             font-weight: 600;
         }
 
-        /* কার্ড বা কন্টেইনার ডিজাইন */
+        /* কার্ড ডিজাইন */
         .container {
             max-width: 450px;
             margin: -50px auto 30px;
@@ -88,11 +89,6 @@
             box-sizing: border-box;
             outline: none;
             transition: 0.3s;
-        }
-
-        input:focus, select:focus {
-            border-color: #28a745;
-            background-color: #fff;
         }
 
         /* সাবমিট বাটন */
@@ -186,9 +182,8 @@
 </div>
 
 <script>
-    // গুরুত্বপূর্ণ: আপনার Google Apps Script URL টি এখানে বসাবেন
+    // আপনার Google Script URL এখানে বসান
     const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
-    
     const form = document.forms['naogaon-form'];
     const btn = document.getElementById('submit-btn');
 
